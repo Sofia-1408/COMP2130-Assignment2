@@ -6,9 +6,63 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.assignment2.hrmps.controller.PayrollController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx/8.0.171"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.assignment2.hrmps.controller.PayrollController"
+      spacing="10" style="-fx-padding:10;">
 
-</AnchorPane>
+    <!-- title for this part -->
+    <Label text="Payroll processing"/>
+
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30"/>
+            <ColumnConstraints percentWidth="70"/>
+        </columnConstraints>
+        <padding>
+            <Insets top="5" right="5" bottom="5" left="5"/>
+        </padding>
+        <!-- Employee selecting -->
+        <Label text="Employee:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="employeeComboBox"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <!-- Period selecting -->
+        <Label text="Period (YYYY-MM):" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="periodField"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <!-- Hours worked selecting -->
+        <Label text="Hours worked:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="hoursWorkedField"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <!-- Overtime hours selecting -->
+        <Label text="Overtime hours:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="overtimeHoursField"
+                   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <!-- Bonuses sllecting-->
+        <Label text="Bonuses:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextField fx:id="bonusesField"
+                   GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        <!-- Other deductions selecting -->
+        <Label text="Other deductions:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <TextField fx:id="deductionsField"
+                   GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10">
+        <Button text="Calculate and Save" onAction="#handleCalculatePayroll"/>
+        <Label fx:id="statusLabel"/>
+    </HBox>
+    <!-- Table showing the payroll recrods -->
+    <TableView fx:id="payrollTable" prefHeight="220">
+        <columns>
+            <TableColumn fx:id="empIdColumn" text="Employee ID" prefWidth="100"/>
+            <TableColumn fx:id="periodColumn" text="Period" prefWidth="100"/>
+            <TableColumn fx:id="grossColumn" text="Gross Pay" prefWidth="100"/>
+            <TableColumn fx:id="taxColumn" text="Tax" prefWidth="100"/>
+            <TableColumn fx:id="netColumn" text="Net Pay" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+</VBox>
+

@@ -6,9 +6,68 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.assignment2.hrmps.controller.ReportController"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox xmlns="http://javafx.com/javafx/8.0.171"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.assignment2.hrmps.controller.ReportController"
+      spacing="10" style="-fx-padding:10;">
+    <!-- Title for this part -->
+    <Label text="Payroll Reports"/>
 
-</AnchorPane>
+    <!-- Employee report part -->
+    <TitledPane text="Employee Report" expanded="true">
+        <content>
+            <VBox spacing="5" style="-fx-padding:5;">
+                <HBox spacing="10">
+                    <Label text="Employee:"/>
+                    <ComboBox fx:id="employeeComboBox"/>     <!-- List of employees -->
+                    <Button text="Load" onAction="#handleLoadEmployeeReport"/>
+                </HBox>
+                <Label fx:id="totalEmployeeLabel" text="Total paid to employee: "/>
+            </VBox>
+        </content>
+    </TitledPane>
+    <!-- Department report part -->
+    <TitledPane text="Department Report" expanded="false">
+        <content>
+            <VBox spacing="5" style="-fx-padding:5;">
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="30"/>
+                        <ColumnConstraints percentWidth="70"/>
+                    </columnConstraints>
+                    <!-- Adding department ID, for specifiying time period -->
+                    <Label text="Department ID:"
+                           GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="departmentIdField"
+                               GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="From (YYYY-MM):"
+                           GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="fromPeriodField"
+                               GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="To (YYYY-MM):"
+                           GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="toPeriodField"
+                               GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                </GridPane>
+                <!-- Button for loading department report -->
+                <Button text="Load Department Report"
+                        onAction="#handleLoadDepartmentReport"/>
+                <!-- Display for the department reprot -->
+                <Label fx:id="totalDepartmentLabel"
+                       text="Total paid for department: "/>
+            </VBox>
+        </content>
+    </TitledPane>
+
+    <Label text="Employee Payroll Records"/>     <!-- Display for employee payroll records -->
+    <TableView fx:id="payrollTable" prefHeight="200">
+        <columns>
+            <TableColumn fx:id="periodColumn" text="Period" prefWidth="120"/>
+            <TableColumn fx:id="grossColumn" text="Gross Pay" prefWidth="120"/>
+            <TableColumn fx:id="netColumn" text="Net Pay" prefWidth="120"/>
+        </columns>
+    </TableView>
+
+</VBox>

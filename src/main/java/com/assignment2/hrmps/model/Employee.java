@@ -100,4 +100,9 @@ public class Employee implements Serializable {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    @Override
+    public String toString() { //Override to string for the sake of boxes where employees are listed
+        return id + " - " + firstName + " " + lastName;
+    }
 }

@@ -15,6 +15,7 @@
             <Button text="Employees" onAction="#showEmployees"/>
             <Button text="Payroll" onAction="#showPayroll"/>
             <Button text="Reports" onAction="#showReports"/>
+            <Button text="Attendance" onAction="#showAttendance"/>
         </VBox>
     </left>
 

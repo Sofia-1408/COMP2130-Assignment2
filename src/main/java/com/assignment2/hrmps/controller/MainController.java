@@ -28,6 +28,11 @@ public class MainController {
         loadCenter("/com/assignment2/hrmps/view/report-view.fxml");
     }
 
+    @FXML
+    private void showAttendance() {
+        loadCenter("/com/assignment2/hrmps/view/attendance-view.fxml");
+    }
+
     //This method allows for loading of the views and it is called whenever we try to load the views
     private void loadCenter(String path){
         try { //Everything in try catch in case of an error
