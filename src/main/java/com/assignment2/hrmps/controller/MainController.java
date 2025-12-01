@@ -6,7 +6,7 @@ import javafx.scene.layout.BorderPane;
 
 public class MainController {
     @FXML
-    private BorderPane borderPane;
+    private BorderPane contentPane;
 
     @FXML
     public void initialize() {
@@ -32,7 +32,7 @@ public class MainController {
     private void loadCenter(String path){
         try { //Everything in try catch in case of an error
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-            borderPane.setCenter(loader.load());
+            contentPane.setCenter(loader.load());
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -6,9 +6,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.assignment2.hrmps.controller.EmployeeController"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox xmlns="http://javafx.com/javafx/8.0.171"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.assignment2.hrmps.controller.EmployeeController"
+      spacing="10" style="-fx-padding:10;">
 
-</AnchorPane>
+    <TableView fx:id="employeeTable" prefHeight="200">     <!--Creating a table of Employees-->
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="80"/>
+            <TableColumn fx:id="firstNameColumn" text="First Name" prefWidth="120"/>
+            <TableColumn fx:id="lastNameColumn" text="Last Name" prefWidth="120"/>
+            <TableColumn fx:id="departmentColumn" text="Department" prefWidth="120"/>
+            <TableColumn fx:id="employmentTypeColumn" text="Type" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+        <HBox spacing="10"> <!-- For adding and updating employees -->
+            <TextField fx:id="idField" promptText="ID"/>
+            <TextField fx:id="firstNameField" promptText="First Name"/>
+            <TextField fx:id="lastNameField" promptText="Last Name"/>
+            <TextField fx:id="departmentField" promptText="Department"/>
+        <ComboBox fx:id="employmentTypeCombo" promptText="Type" prefWidth="120"/>
+    </HBox>
+
+    <HBox spacing="10"> <!-- Buttons for deleting, adding and updating employees -->
+        <Button text="Add" onAction="#handleAdd"/>
+        <Button text="Update Selected" onAction="#handleUpdate"/>
+        <Button text="Delete Selected" onAction="#handleDelete"/>
+    </HBox>
+
+</VBox>
