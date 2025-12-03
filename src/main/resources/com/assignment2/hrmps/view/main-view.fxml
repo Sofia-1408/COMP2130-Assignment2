@@ -13,9 +13,10 @@
     <left>
         <VBox spacing="10" style="-fx-padding: 10;">
             <Button text="Employees" onAction="#showEmployees"/>
-            <Button text="Payroll" onAction="#showPayroll"/>
-            <Button text="Reports" onAction="#showReports"/>
+            <Button fx:id="payrollButton" text="Payroll" onAction="#showPayroll"/>
+            <Button fx:id="reportsButton" text="Reports" onAction="#showReports"/>
             <Button text="Attendance" onAction="#showAttendance"/>
+            <Button text="Analytics" onAction="#showAnalytics"/>
         </VBox>
     </left>
 
